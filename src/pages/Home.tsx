@@ -1,8 +1,12 @@
-import React from 'react'
+import Country from "../components/Country"
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className="grid grid-cols-1 gap-8">
+        <Country />
+        <Country />
+        <Country />
+    </div>
   )
 }
 

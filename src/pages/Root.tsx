@@ -3,12 +3,12 @@ import Navigation from '../components/Navigation'
 
 const Root = () => {
     return (
-        <>
+        <div >
             <Navigation />
-            <main>
+            <main className='w-full max-w-[22rem] m-auto'>
                 <Outlet />
             </main>
-        </>
+        </div>
     )
 }
 

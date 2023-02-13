@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './pages/Root';
 import Home from './pages/Home';
-import Country from './pages/Country';
+import Country from './pages/CountryDetails';
 
 function App() {
 
@@ -23,7 +23,7 @@ function App() {
   ])
 
   return (
-    <div>
+    <div className='bg-slate-800/95'>
       <RouterProvider router={router} />
     </div>
   )
