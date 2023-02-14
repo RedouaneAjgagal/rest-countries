@@ -4,7 +4,7 @@ const Country = () => {
     return (
         <Link to={'japan'} className='rounded-lg bg-slate-800/20 text-white p-3'>
             <div className='bg-gray-700 rounded-lg'>
-                <img src="https://flagcdn.com/w320/jp.png" alt="Japan Flag" className='rounded-lg object-cover w-full h-52' />
+                <img src="https://flagcdn.com/jp.svg" alt="Japan Flag" className='rounded-t-lg object-cover w-full h-52' />
                 <div className='py-8 px-8'>
                     <h2 className='pb-4 text-2xl font-bold'>Japan</h2>
                     <div className='leading-7 pb-4'>
