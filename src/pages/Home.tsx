@@ -1,4 +1,4 @@
-import { json, useLoaderData } from "react-router-dom"
+import { json, useLoaderData, LoaderFunction} from "react-router-dom"
 import Country from "../components/Country"
 import Filter from "../components/Filter"
 import Search from "../components/Search"
@@ -6,8 +6,6 @@ import { CountryType } from "../components/Country"
 
 const Home = () => {
   const data = useLoaderData() as [CountryType];
-  console.log(data);
-  
   return (
     <>
       <div className="flex flex-col gap-8 px-4">
@@ -23,7 +21,7 @@ const Home = () => {
 
 export default Home
 
-export const loeader = async () => {
+export const loader = async () => {
   const response = await fetch('https://restcountries.com/v2/all');
   if (!response.ok) {
     throw json({ errorMsg: 'Could not fetch data' }, { status: 500 });
