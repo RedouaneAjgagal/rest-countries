@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './pages/Root';
-import Home from './pages/Home';
+import Home, { loeader as displayCountries } from './pages/Home';
 import Country from './pages/CountryDetails';
 
 function App() {
@@ -12,7 +12,8 @@ function App() {
       children: [
         {
           index: true,
-          element: <Home />
+          element: <Home />,
+          loader: displayCountries
         },
         {
           path: ':countryName',
