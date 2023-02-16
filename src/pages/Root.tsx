@@ -1,6 +1,5 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, json, ActionFunction, LoaderFunction } from 'react-router-dom'
 import Navigation from '../components/Navigation'
-import { json } from 'react-router-dom'
 
 const Root = () => {
     return (
@@ -15,12 +14,13 @@ const Root = () => {
 
 export default Root
 
-
-export const loader = async () => {
-    const response = await fetch('https://restcountries.com/v2/all');
+export const loader: LoaderFunction = async (props) => {
+    const searchParams = new URL(props.request.url).searchParams;
+    const region = searchParams.get('region') ? `region/${searchParams.get('region')}` : 'all';
+    const response = await fetch(`https://restcountries.com/v2/${region}`);
     if (!response.ok) {
-      throw json({ errorMsg: 'Could not fetch data' }, { status: 500 });
+        throw json({ errorMsg: 'Could not fetch data' }, { status: 500 });
     }
     const data = await response.json();
     return data
-  }
+}
