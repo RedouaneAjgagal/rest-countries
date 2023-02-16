@@ -1,11 +1,14 @@
 import CountryDetails from "../components/CountryDetails"
-import { json, useNavigate, useLoaderData, LoaderFunction } from 'react-router-dom'
+import { json, useNavigate, useLoaderData, LoaderFunction, useRouteLoaderData } from 'react-router-dom'
 import { CountryData } from "../components/CountryDetails";
 
 const Country = () => {
+  const countries = useRouteLoaderData('root') as { alpha3Code: string, name: string }[];
   const data = useLoaderData() as [CountryData];
   const navigate = useNavigate()
   const [pullCountryData] = data;
+  const bordersName = countries.filter(country => pullCountryData.borders?.includes(country.alpha3Code)).map(item => item.name)
+
   const countryData = {
     name: pullCountryData.name,
     flag: pullCountryData.flag,
@@ -17,12 +20,13 @@ const Country = () => {
     topLevelDomain: pullCountryData.topLevelDomain,
     currencies: pullCountryData.currencies,
     languages: pullCountryData.languages,
-    borders: pullCountryData.borders,
+    borders: bordersName,
   }
 
   const getBackHandler = () => {
     navigate("..");
   }
+
   return (
     <div className="flex flex-col gap-16 items-start px-4">
       <button className="bg-slate-700 px-8 py-1 shadow-md shadow-slate-800" onClick={getBackHandler}>Back</button>

@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import Navigation from '../components/Navigation'
+import { json } from 'react-router-dom'
 
 const Root = () => {
     return (
@@ -13,3 +14,13 @@ const Root = () => {
 }
 
 export default Root
+
+
+export const loader = async () => {
+    const response = await fetch('https://restcountries.com/v2/all');
+    if (!response.ok) {
+      throw json({ errorMsg: 'Could not fetch data' }, { status: 500 });
+    }
+    const data = await response.json();
+    return data
+  }

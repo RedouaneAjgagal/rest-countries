@@ -9,10 +9,10 @@ export interface CountryData {
     region: string,
     subregion: string,
     capital: string,
-    topLevelDomain: [string],
+    topLevelDomain: string[],
     currencies: { name: string }[],
     languages: { name: string }[],
-    borders?: [string]
+    borders?: string[]
 }
 interface Props {
     CountryData: CountryData
@@ -46,7 +46,7 @@ const CountryDetails: React.FC<Props> = (props) => {
             <div>
                 <h2 className='mb-5 font-semibold text-lg'>Border Countries:</h2>
                 <div className='flex gap-4 flex-wrap'>
-                    {props.CountryData.borders?.map(border => <NavigateBtn key={border} border={border} />)}
+                    {props.CountryData.borders?.length ? props.CountryData.borders?.map(border => <NavigateBtn key={border} border={border} />) : <p className='text-slate-400'>No borders..</p>}
                 </div>
             </div>
         </article>

@@ -5,7 +5,8 @@ export interface CountryType {
     population: number,
     region: string,
     capital: string,
-    flag: string
+    flag: string,
+    allCountries: CountryType[]
 }
 
 const Country: React.FC<CountryType> = (props) => {

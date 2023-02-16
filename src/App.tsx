@@ -1,22 +1,24 @@
 import { createBrowserRouter, RouterProvider, LoaderFunction } from 'react-router-dom';
-import Root from './pages/Root';
+import Root, { loader as countriesLoader } from './pages/Root';
 // import Home, { loeader as countriesLoader } from './pages/Home';
 import Country, { loader as countryLoader } from './pages/CountryDetails';
 import React, { lazy, Suspense } from 'react';
+import Home from './pages/Home';
 
 
 function App() {
-  const Home = lazy(() => import('./pages/Home'));
-  const countriesLoader = () => import('./pages/Home').then(module => module.loader());
+  // const Home = lazy(() => import('./pages/Home'));
+  // const countriesLoader = () => import('./pages/Home').then(module => module.loader());
   const router = createBrowserRouter([
     {
       path: '/',
       element: <Root />,
+      id: 'root',
+      loader: countriesLoader,
       children: [
         {
           index: true,
-          element: <Suspense fallback={<p>Loading...</p>}><Home /></Suspense>,
-          loader: countriesLoader
+          element: <Home />
         },
         {
           path: ':countryName',
