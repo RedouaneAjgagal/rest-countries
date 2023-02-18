@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import { FaSortDown } from 'react-icons/fa'
 
 const Filter = () => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -12,11 +13,11 @@ const Filter = () => {
 
 
     return (
-        <div className='flex gap-6 items-end'>
+        <div className='flex gap-6 items-end md:w-full md:justify-end'>
             <div className='w-full max-w-[16rem] grid gap-2 relative'>
-                <button onClick={visibleHandler} className='bg-gray-700 rounded-lg shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] py-4 px-6 flex justify-between w-full'>
+                <button onClick={visibleHandler} className='bg-gray-700 rounded-lg shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] py-4 px-6 flex justify-between w-full items-center'>
                     {searchRegion ? <span>{region === 'Americas' ? 'America' : region}</span> : <span>Filter by Region</span>}
-                    <span>Icn</span>
+                    <span className='flex items-center -mt-1'><FaSortDown /></span>
                 </button>
                 {isVisible &&
                     <ul onClick={visibleHandler} className='bg-gray-700 rounded-lg shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] absolute w-full top-[3.75rem]'>

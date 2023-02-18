@@ -20,9 +20,9 @@ interface Props {
 
 const CountryDetails: React.FC<Props> = (props) => {
     return (
-        <article className='grid gap-10 md:grid-cols-2 md:items-center md:gap-8 md:justify-between md:w-full'>
-            <div className='shadow-xl md:w-full md:max-w-[22rem] lg:max-w-[30rem]'>
-                <img src={props.CountryData.flag} alt={`${props.CountryData.name} flag`} className='' />
+        <article className='w-full grid gap-10 md:grid-cols-2 md:items-center md:gap-8 md:justify-between'>
+            <div className='md:w-full md:max-w-[22rem] lg:max-w-[37rem]'>
+                <img src={props.CountryData.flag} alt={`${props.CountryData.name} flag`} className='shadow-xl w-full' />
             </div>
             <div className='grid gap-10 md:gap-6'>
                 <h1 className='font-bold text-3xl tracking-wide mt-4'>{props.CountryData.name}</h1>
@@ -36,10 +36,10 @@ const CountryDetails: React.FC<Props> = (props) => {
                     </div>
                     <div className='leading-8'>
                         <p>Top Level Domain:
-                            {props.CountryData.topLevelDomain.map(tld => <span className='text-slate-400' key={tld}> {tld}</span>)}
+                            {props.CountryData.topLevelDomain?.map(tld => <span className='text-slate-400' key={tld}> {tld}</span>)}
                         </p>
                         <p>Currencies:
-                            {props.CountryData.currencies.map(currency => <span className='text-slate-400' key={currency.name}> {currency.name},</span>)}
+                            {props.CountryData.currencies?.map(currency => <span className='text-slate-400' key={currency.name}> {currency.name},</span>)}
                         </p>
                         <p>Languages:
                             {props.CountryData.languages.map(language => <span className='text-slate-400' key={language.name}> {language.name},</span>)}

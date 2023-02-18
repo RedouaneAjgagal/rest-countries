@@ -1,6 +1,7 @@
 import CountryDetails from "../components/CountryDetails"
 import { json, useNavigate, useLoaderData, LoaderFunction, useRouteLoaderData } from 'react-router-dom'
 import { CountryData } from "../components/CountryDetails";
+import { FaArrowLeft } from 'react-icons/fa'
 
 const Country = () => {
   const countries = useRouteLoaderData('root') as { alpha3Code: string, name: string }[];
@@ -29,7 +30,7 @@ const Country = () => {
 
   return (
     <div className="flex flex-col gap-16 items-start px-4">
-      <button className="bg-slate-700 px-8 py-1 shadow-md shadow-slate-800" onClick={getBackHandler}>Back</button>
+      <button className="bg-slate-700 px-8 py-1 shadow-md shadow-slate-800 flex items-center gap-2" onClick={getBackHandler}><FaArrowLeft />Back</button>
       <CountryDetails CountryData={countryData} />
     </div>
   )
