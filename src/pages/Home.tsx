@@ -14,7 +14,7 @@ const Home = () => {
   
   return (
     <>
-      <div className="flex flex-col gap-8 px-4">
+      <div className="flex flex-col gap-8 px-4 md:flex-row md:justify-between md:px-6">
         <Search searchedCountry={searchedCountry} />
         <Filter />
       </div>

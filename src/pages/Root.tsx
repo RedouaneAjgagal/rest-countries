@@ -5,7 +5,7 @@ const Root = () => {
     return (
         <div>
             <Navigation />
-            <main className='w-full max-w-[80rem] m-auto flex flex-col gap-10 py-8'>
+            <main className='w-full max-w-[100rem] m-auto flex flex-col gap-10 py-8'>
                 <Outlet />
             </main>
         </div>

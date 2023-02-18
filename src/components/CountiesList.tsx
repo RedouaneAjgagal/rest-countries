@@ -11,7 +11,7 @@ const CountiesList: React.FC<Props> = (props) => {
     const countries = props.countries.filter(country => country.name.toLowerCase().includes(props.search.toLowerCase()))
 
     return (
-        <div className="grid grid-cols-1 gap-8 px-6">
+        <div className="grid grid-cols-1 gap-8 px-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {countries.map(country => <Country name={country.name} population={country.population} region={country.region} capital={country.capital} key={country.name} flag={country.flag} allCountries={props.countries} />)}
         </div>
     )
