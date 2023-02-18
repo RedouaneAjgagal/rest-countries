@@ -19,6 +19,11 @@ interface Props {
 }
 
 const CountryDetails: React.FC<Props> = (props) => {
+    const languages = props.CountryData.languages.map((language, index) => index === props.CountryData.languages.length - 1 ? language.name : `${language.name},`).join(' ');
+    const currencies = props.CountryData.currencies.map((currency, index) => index === props.CountryData.currencies.length - 1 ? currency.name : `${currency.name},`).join(' ');
+    const topLevelDomain = props.CountryData.topLevelDomain.map((tld, index) => index === props.CountryData.topLevelDomain.length - 1 ? tld : `${tld},`).join(' ');
+
+
     return (
         <article className='w-full grid gap-10 md:grid-cols-2 md:items-center md:gap-8 md:justify-between'>
             <div className='md:w-full md:max-w-[22rem] lg:max-w-[37rem]'>
@@ -35,15 +40,9 @@ const CountryDetails: React.FC<Props> = (props) => {
                         <p>Capital: <span className='text-slate-400'>{props.CountryData.capital}</span></p>
                     </div>
                     <div className='leading-8'>
-                        <p>Top Level Domain:
-                            {props.CountryData.topLevelDomain?.map(tld => <span className='text-slate-400' key={tld}> {tld}</span>)}
-                        </p>
-                        <p>Currencies:
-                            {props.CountryData.currencies?.map(currency => <span className='text-slate-400' key={currency.name}> {currency.name},</span>)}
-                        </p>
-                        <p>Languages:
-                            {props.CountryData.languages.map(language => <span className='text-slate-400' key={language.name}> {language.name},</span>)}
-                        </p>
+                        <p className='flex gap-1'>Top Level Domain:<span className='text-slate-400'>{topLevelDomain}</span></p>
+                        <p className='flex gap-1'>Currencies:<span className='text-slate-400'>{currencies}</span></p>
+                        <p className='flex gap-1'>Languages:<span className='text-slate-400'>{languages}</span></p>
                     </div>
                 </div>
                 <div className='lg:flex lg:items-center lg:gap-4'>
