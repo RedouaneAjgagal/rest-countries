@@ -15,12 +15,12 @@ const Filter = () => {
     return (
         <div className='flex gap-6 items-end md:w-full md:justify-end'>
             <div className='w-full max-w-[16rem] grid gap-2 relative'>
-                <button onClick={visibleHandler} className='bg-gray-700 rounded-lg shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] py-4 px-6 flex justify-between w-full items-center'>
+                <button onClick={visibleHandler} className='dark:bg-gray-700 rounded-lg dark:shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] py-4 px-6 flex justify-between w-full items-center bg-white shadow-[0_0_1px_.6rem_rgb(0,0,0,0.02)]'>
                     {searchRegion ? <span>{region === 'Americas' ? 'America' : region}</span> : <span>Filter by Region</span>}
                     <span className='flex items-center -mt-1'><FaSortDown /></span>
                 </button>
                 {isVisible &&
-                    <ul onClick={visibleHandler} className='bg-gray-700 rounded-lg shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] absolute w-full top-[3.75rem]'>
+                    <ul onClick={visibleHandler} className='dark:bg-gray-700 rounded-lg shadow-[0_5px_1px_.6rem_rgb(0,0,0,0.05)] absolute w-full top-[3.75rem] bg-white z-10'>
                         <li><Link to={'?region=africa'} className='block px-6 py-2 hover:bg-gray-800/20 ease-in-out duration-200'>Africa</Link></li>
                         <li><Link to={'?region=americas'} className='block px-6 py-2 hover:bg-gray-800/20 ease-in-out duration-200'>America</Link></li>
                         <li><Link to={'?region=asia'} className='block px-6 py-2 hover:bg-gray-800/20 ease-in-out duration-200'>Asia</Link></li>

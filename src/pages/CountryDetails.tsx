@@ -30,7 +30,7 @@ const Country = () => {
 
   return (
     <div className="flex flex-col gap-16 items-start px-4">
-      <button className="bg-slate-700 px-8 py-1 shadow-md shadow-slate-800 flex items-center gap-2" onClick={getBackHandler}><FaArrowLeft />Back</button>
+      <button className="dark:bg-slate-700 px-8 py-1 shadow-md dark:shadow-slate-800 shadow-slate-400/50 flex items-center gap-2 bg-white" onClick={getBackHandler}><FaArrowLeft />Back</button>
       <CountryDetails CountryData={countryData} />
     </div>
   )

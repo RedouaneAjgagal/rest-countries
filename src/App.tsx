@@ -28,7 +28,7 @@ function App() {
   ])
 
   return (
-    <div className='bg-slate-800/95 text-white min-h-screen'>
+    <div className='dark:bg-slate-800/95 dark:text-white min-h-screen bg-slate-50'>
       <RouterProvider router={router} />
     </div>
   )
