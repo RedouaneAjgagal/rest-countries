@@ -9,8 +9,6 @@ const Search: React.FC<Props> = (props) => {
     }, 1000);
     return () => clearTimeout(duration)
   }
-  // console.log(search);
-
 
   return (
     <label htmlFor='search' className='p-4 cursor-pointer bg-gray-700 rounded-lg shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] flex gap-4'>
