@@ -19,7 +19,7 @@ export const loader = async (url: string) => {
     const region = searchParams.get('region') ? `region/${searchParams.get('region')}` : 'all';
     const response = await fetch(`https://restcountries.com/v2/${region}`);
     if (!response.ok) {
-        throw json({ errorMsg: 'Could not fetch data' }, { status: 500 });
+        throw json({ errorMsg: 'Could not fetch data' }, { status: 500, statusText: 'Could not load' });
     }
     const data = await response.json();
     return data

@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, LoaderFunction } from 'react-route
 import Root from './pages/Root';
 // import Home from './pages/Home';
 import { lazy, Suspense } from 'react';
+import Error from './pages/Error';
 
 const Home = lazy(() => import('./pages/Home'));
 const Country = lazy(() => import('./pages/Country'));
@@ -14,6 +15,7 @@ function App() {
     {
       path: '/',
       element: <Root />,
+      errorElement: <Error />,
       id: 'root',
       loader: countriesLoader,
       children: [

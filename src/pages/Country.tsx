@@ -55,7 +55,7 @@ export const loader = async (country: string) => {
   const response = await fetch(`https://restcountries.com/v2/name/${id}?fullText=true`);
 
   if (!response.ok) {
-    throw json({ errorMsg: 'Could not load the country data' }, { status: 500 });
+    throw json({ errorMsg: 'Could not load the country data' }, { status: 500, statusText: 'Could not load' });
   }
   const data = await response.json();
 
