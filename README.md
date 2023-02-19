@@ -43,8 +43,8 @@ Users should be able to:
 
 ### Links
 
-- Source: [GitHub Repository]()
-- Live: [Live Site]()
+- Source: [GitHub Repository](https://github.com/RedouaneAjgagal/rest-countries)
+- Live: [Live Site](https://country-details-apps.netlify.app/)
 
 ## My process
 
