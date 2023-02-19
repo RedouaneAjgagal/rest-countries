@@ -5,9 +5,9 @@ import Root from './pages/Root';
 import { lazy, Suspense } from 'react';
 
 const Home = lazy(() => import('./pages/Home'));
-const Country = lazy(() => import('./pages/CountryDetails'));
+const Country = lazy(() => import('./pages/Country'));
 const countriesLoader: LoaderFunction = (({ request }) => import('./pages/Root').then(module => module.loader(request.url)))
-const countryLoader: LoaderFunction = (({ params }) => import('./pages/CountryDetails').then(module => module.loader(params.countryName!)))
+const countryLoader: LoaderFunction = (({ params }) => import('./pages/Country').then(module => module.loader(params.countryName!)))
 function App() {
   localStorage.theme === 'dark' ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')
   const router = createBrowserRouter([

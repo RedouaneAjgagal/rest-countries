@@ -2,8 +2,8 @@ import { useRouteLoaderData } from "react-router-dom"
 import Filter from "../components/Filter"
 import Search from "../components/Search"
 import { CountryType } from "../components/Country"
-import CountiesList from "../components/CountiesList"
-import React, { useState } from "react"
+import CountiesList from "../components/CountriesList"
+import { useState } from "react"
 
 const Home = () => {
   const data = useRouteLoaderData('root') as CountryType[]
