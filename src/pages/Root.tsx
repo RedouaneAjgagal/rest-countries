@@ -14,8 +14,8 @@ const Root = () => {
 
 export default Root
 
-export const loader: LoaderFunction = async (props) => {
-    const searchParams = new URL(props.request.url).searchParams;
+export const loader = async (url: string) => {
+    const searchParams = new URL(url).searchParams;
     const region = searchParams.get('region') ? `region/${searchParams.get('region')}` : 'all';
     const response = await fetch(`https://restcountries.com/v2/${region}`);
     if (!response.ok) {

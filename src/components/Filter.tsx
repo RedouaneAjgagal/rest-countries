@@ -20,7 +20,8 @@ const Filter = () => {
                     <span className='flex items-center -mt-1'><FaSortDown /></span>
                 </button>
                 {isVisible &&
-                    <ul onClick={visibleHandler} className='dark:bg-gray-700 rounded-lg shadow-[0_5px_1px_.6rem_rgb(0,0,0,0.05)] absolute w-full top-[3.75rem] bg-white z-10'>
+                    <ul onClick={visibleHandler} className='dark:bg-gray-700 rounded-lg dark:shadow-[0_5px_1px_.6rem_rgb(0,0,0,0.05)] shadow-[0_0_1px_.6rem_rgb(0,0,0,0.02)] absolute w-full top-[3.75rem] bg-white z-10'>
+                        <li><Link to={'/'} className='block px-6 py-2 hover:bg-gray-800/20 ease-in-out duration-200'>All</Link></li>
                         <li><Link to={'?region=africa'} className='block px-6 py-2 hover:bg-gray-800/20 ease-in-out duration-200'>Africa</Link></li>
                         <li><Link to={'?region=americas'} className='block px-6 py-2 hover:bg-gray-800/20 ease-in-out duration-200'>America</Link></li>
                         <li><Link to={'?region=asia'} className='block px-6 py-2 hover:bg-gray-800/20 ease-in-out duration-200'>Asia</Link></li>

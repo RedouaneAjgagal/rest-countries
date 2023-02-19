@@ -1,7 +1,8 @@
 import CountryDetails from "../components/CountryDetails"
-import { json, useNavigate, useLoaderData, LoaderFunction, useRouteLoaderData } from 'react-router-dom'
+import { json, useNavigate, useLoaderData, LoaderFunction, useRouteLoaderData, useLocation } from 'react-router-dom'
 import { CountryData } from "../components/CountryDetails";
 import { FaArrowLeft } from 'react-icons/fa'
+import React, { useEffect } from "react";
 
 const Country = () => {
   const countries = useRouteLoaderData('root') as { alpha3Code: string, name: string }[];
@@ -25,8 +26,18 @@ const Country = () => {
   }
 
   const getBackHandler = () => {
-    navigate("..");
+    navigate(-1);
   }
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [pathname]);
 
   return (
     <div className="flex flex-col gap-16 items-start px-4">
@@ -38,8 +49,8 @@ const Country = () => {
 
 export default Country
 
-export const loader: LoaderFunction = async (props) => {
-  const countryName = props.params.countryName!;
+export const loader = async (country: string) => {
+  const countryName = country;
   const id = countryName.replace(/-/g, '%20')
   const response = await fetch(`https://restcountries.com/v2/name/${id}?fullText=true`);
 

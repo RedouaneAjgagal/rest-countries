@@ -5,10 +5,9 @@ interface Props {
 
 const Search: React.FC<Props> = (props) => {
   const searchHanlder = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const duration = setTimeout(() => {
+    setTimeout(() => {
       props.searchedCountry(e.target.value)
     }, 1000);
-    return () => clearTimeout(duration)
   }
 
   return (

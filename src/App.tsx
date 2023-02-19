@@ -1,11 +1,15 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Root, { loader as countriesLoader } from './pages/Root';
-import Country, { loader as countryLoader } from './pages/CountryDetails';
-import Home from './pages/Home';
+import { createBrowserRouter, RouterProvider, LoaderFunction } from 'react-router-dom';
+// import { loader as countryLoader } from './pages/CountryDetails';
+import Root from './pages/Root';
+// import Home from './pages/Home';
+import { lazy, Suspense } from 'react';
 
-
+const Home = lazy(() => import('./pages/Home'));
+const Country = lazy(() => import('./pages/CountryDetails'));
+const countriesLoader: LoaderFunction = (({ request }) => import('./pages/Root').then(module => module.loader(request.url)))
+const countryLoader: LoaderFunction = (({ params }) => import('./pages/CountryDetails').then(module => module.loader(params.countryName!)))
 function App() {
-
+  localStorage.theme === 'dark' ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')
   const router = createBrowserRouter([
     {
       path: '/',
@@ -15,12 +19,12 @@ function App() {
       children: [
         {
           index: true,
-          element: <Home />,
-          
+          element: <Suspense fallback={<div className='animate-ping w-16 h-16 fixed top-[50%] left-[50%] dark:bg-slate-100 bg-slate-800 rounded-full'></div>}><Home /></Suspense>,
+
         },
         {
           path: ':countryName',
-          element: <Country />,
+          element: <Suspense fallback={<div className='animate-ping w-16 h-16 fixed top-[50%] left-[50%] dark:bg-slate-100 bg-slate-800 rounded-full'></div>}><Country /></Suspense>,
           loader: countryLoader
         }
       ]
