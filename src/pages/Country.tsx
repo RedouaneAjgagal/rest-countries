@@ -49,11 +49,11 @@ const Country = () => {
 
 export default Country
 
-export const loader = async (country: string) => {
-  const countryName = country;
+export const loader: LoaderFunction = async ({ params }) => {
+  const countryName = params.countryName!;
 
   let id = countryName.replace(/-/g, '%20');
-  
+
   if (countryName.includes(`&${20}`)) {
     id = countryName.replace(/&20/g, '-')
   }
