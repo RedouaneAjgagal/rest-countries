@@ -29,7 +29,7 @@ export const loader: LoaderFunction = async () => {
     const PAGE_SIZE = 20
     const result = pages * PAGE_SIZE
     const fetchedData = await fetchData();
-    return fetchedData.slice(0, result)
+    return { data: fetchedData, result }
 }
 
 
@@ -39,12 +39,6 @@ export const action: ActionFunction = async () => {
     const PAGE_SIZE = 20
     const result = pages * PAGE_SIZE
     const start = result - PAGE_SIZE
-    // const response = await fetch(`https://restcountries.com/v2/all`);
-    // if (!response.ok) {
-    //     throw json({ errorMsg: 'Could not fetch data' }, { status: 500, statusText: 'Could not load' });
-    // }
-    // const data = await response.json();
-
     const fetchedData = await fetchData()
     return { data: fetchedData.slice(start, result), result }
 }

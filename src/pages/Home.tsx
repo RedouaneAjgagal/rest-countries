@@ -8,9 +8,9 @@ const Home = () => {
   const fetcher = useFetcher()
   const { data: fetcherData, state } = fetcher
   const isSubmitting = state === 'submitting';
-  const loadData = useRouteLoaderData('root') as CountryType[];
+  const { data: loadData, result } = useRouteLoaderData('root') as { data: CountryType[], result: number };
   const [search, setSearch] = useState('');
-  const [countries, setCountries] = useState<CountryType[]>(loadData)
+  const [countries, setCountries] = useState(loadData.slice(0, result));
   const searchedCountry = (value: string) => {
     setSearch(value);
   }

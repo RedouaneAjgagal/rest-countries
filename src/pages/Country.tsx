@@ -5,7 +5,7 @@ import { FaArrowLeft } from 'react-icons/fa'
 import { useEffect } from "react";
 
 const Country = () => {
-  const countries = useRouteLoaderData('root') as { alpha3Code: string, name: string }[];
+  const { data: countries } = useRouteLoaderData('root') as { data: { alpha3Code: string, name: string }[] };
   const data = useLoaderData() as [CountryData];
   const navigate = useNavigate()
   const [pullCountryData] = data;
