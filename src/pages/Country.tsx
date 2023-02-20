@@ -51,7 +51,13 @@ export default Country
 
 export const loader = async (country: string) => {
   const countryName = country;
-  const id = countryName.replace(/-/g, '%20')
+
+  let id = countryName.replace(/-/g, '%20');
+  
+  if (countryName.includes(`&${20}`)) {
+    id = countryName.replace(/&20/g, '-')
+  }
+
   const response = await fetch(`https://restcountries.com/v2/name/${id}?fullText=true`);
 
   if (!response.ok) {

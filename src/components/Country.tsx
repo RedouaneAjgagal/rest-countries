@@ -10,7 +10,13 @@ export interface CountryType {
 }
 
 const Country: React.FC<CountryType> = (props) => {
-    const link = props.name.replace(/\s+/g, '-').toLowerCase();
+    let link = props.name.replace(/\s+/g, '-').toLowerCase();
+    
+    if (props.name.includes('-')) {
+        link = props.name.replace(/-/g, '&20');
+        
+    }
+
     return (
         <Link to={link} className='group rounded-lg dark:text-white dark:shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] shadow-[0_0_1px_.6rem_rgb(0,0,0,0.02)]'>
             <div className='sm:h-48 md:h-60 rounded-t-lg overflow-hidden border-b dark:border-gray-700 '>
