@@ -40,5 +40,5 @@ export const action: ActionFunction = async () => {
     const result = pages * PAGE_SIZE
     const start = result - PAGE_SIZE
     const fetchedData = await fetchData()
-    return { data: fetchedData.slice(start, result), result }
+    return fetchedData.slice(start, result)
 }

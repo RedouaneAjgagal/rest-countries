@@ -9,19 +9,25 @@ const Home = () => {
   const isSubmitting = state === 'submitting';
   const { data: loadData, result } = useRouteLoaderData('root') as { data: CountryType[], result: number };
   const [countries, setCountries] = useState(loadData.slice(0, result));
+  const [searched, setSearched] = useState('');
+  const searchedCountries = loadData.filter(country => country.name.toLowerCase().includes(searched.toLowerCase()))
 
+  const searchedCountry = (value: string) => {
+    setSearched(value)
+  }
   useEffect(() => {
-    if (fetcherData && fetcherData.data) {
-      setCountries((prev) => [...prev, ...fetcherData.data]);
+    if (fetcherData) {
+      setCountries((prev) => [...prev, ...fetcherData]);
     }
   }, [fetcherData])
   return (
     <>
-      <HomeNav />
-      <CountiesList countries={countries} allCountries={loadData} />
-      <fetcher.Form className="flex justify-center" action="/" method="post" >
+      <HomeNav searchedCountry={searchedCountry} />
+      <CountiesList countries={searched === '' ? countries : searchedCountries} allCountries={loadData} />
+      {!searched && <fetcher.Form className="flex justify-center" action="/" method="post" >
         <input disabled={isSubmitting} type="submit" value="Load more" name="loadMore" className={`cursor-pointer dark:text-slate-5 font-medium border-b ${isSubmitting && 'animate-ping'}`} />
-      </fetcher.Form>
+      </fetcher.Form>}
+      {searched && searchedCountries.length === 0 && <h1 className='text-center text-lg'>No country match "{searched}"</h1>}
     </>
   )
 }
