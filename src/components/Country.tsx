@@ -18,7 +18,7 @@ const Country: React.FC<CountryType> = (props) => {
     }
 
     return (
-        <Link to={link} className='group dark:bg-gray-700 bg-white rounded-lg dark:text-white dark:shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] shadow-[0_0_1px_.6rem_rgb(0,0,0,0.02)]'>
+        <Link to={`/${link}`} className='group dark:bg-gray-700 bg-white rounded-lg dark:text-white dark:shadow-[0_0_1px_.6rem_rgb(0,0,0,0.05)] shadow-[0_0_1px_.6rem_rgb(0,0,0,0.02)]'>
             <div className='sm:h-48 md:h-60 rounded-t-lg overflow-hidden border-b dark:border-gray-700 '>
                 <img src={props.flag} alt="Japan Flag" className='sm:h-full object-cover w-full min-h-[10rem] group-hover:scale-125 ease-in-out duration-500' />
             </div>

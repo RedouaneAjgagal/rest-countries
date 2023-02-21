@@ -3,6 +3,7 @@ import Country, { loader as countryLoader } from './pages/Country';
 import Error from './pages/Error';
 import Root, { action as loadMoreAction, loader as countriesLoader } from './pages/Root'
 import Home from './pages/Home';
+import Region, { laoder as regionLoader,  } from './pages/Region';
 
 function App() {
   localStorage.theme === 'dark' ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')
@@ -23,6 +24,11 @@ function App() {
           path: ':countryName',
           element: <Country />,
           loader: countryLoader
+        },
+        {
+          path: 'region/:regionId',
+          element: <Region />,
+          loader: regionLoader
         }
       ]
     }
